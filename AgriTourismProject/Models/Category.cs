@@ -25,7 +25,7 @@ namespace AgriTourismProject.Models
 
         [Required]
         [DisplayName("Total Capacity")]
-        [Range(5, int.MaxValue, ErrorMessage = "Capacity must be at least 1.")]
+        [Range(3, int.MaxValue, ErrorMessage = "Capacity must be at least 3.")]
         public int Capacity { get; set; }
 
         [Required]

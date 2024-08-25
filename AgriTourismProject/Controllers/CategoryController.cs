@@ -115,5 +115,62 @@ namespace AgriTourismProject.Controllers
             TempData["success"] = "Category Deleted Successfully";
             return RedirectToAction("Index");
         }
+
+
+
+        public IActionResult Details(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+
+            Category? categoryFromDb = _db.Categories.Find(id);
+
+            if (categoryFromDb == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryFromDb);
+        }
+
+
+
+
+
+        public IActionResult Payment(int id)
+        {
+            var category = _db.Categories.FirstOrDefault(c => c.Id == id);
+            if (category == null)
+            {
+                return NotFound();
+            }
+
+            if (category.Capacity > 0)
+            {
+                category.Capacity--;
+                _db.SaveChanges();
+                TempData["BookingSuccess"] = true;
+                return RedirectToAction("PaymentConfirmation");
+            }
+            else
+            {
+                TempData["OutOfCapacity"] = true;
+                return RedirectToAction("Details", new { id });
+            }
+        }
+
+        public IActionResult PaymentConfirmation()
+        {
+            return View();
+        }
     }
+
+
+
 }
+
+
+
+

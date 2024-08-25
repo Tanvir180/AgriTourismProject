@@ -33,7 +33,7 @@
             {
                 <table class="table table-bordered table-striped table-hover">
                     <thead class="table-dark">
-                        <tr>
+                        <tr class="text-center">
                             <th>ID</th>
                             <th>Place Name</th>
                             <th>Location</th>
@@ -54,12 +54,15 @@
                                 <td>@obj.Capacity</td>
                                 <td>@obj.Date.ToString("yyyy-MM-dd")</td>
                                 <td>
-                                    <div class="w-75 btn-group" role="group">
+                                    <div class="w-100 btn-group" role="group">
                                         <a asp-controller="Category" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-primary mx-2">
                                             <i class="bi bi-pencil-square"></i> Edit
                                         </a>
                                         <a asp-controller="Category" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger mx-2">
                                             <i class="bi bi-trash-fill"></i> Delete
+                                        </a>
+                                        <a asp-controller="Category" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-info mx-2">
+                                            <i class="bi bi-eye-fill"></i> Book Place
                                         </a>
                                     </div>
                                 </td>
