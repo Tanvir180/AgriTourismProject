@@ -1,6 +1,7 @@
 ﻿using AgriTourismProject.Data;
 using AgriTourismProject.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
 
 namespace AgriTourismProject.Controllers
 {
@@ -44,11 +45,6 @@ namespace AgriTourismProject.Controllers
         [HttpPost]
         public IActionResult Create(Category obj)
         {
-            //if (obj.Name == obj.DisplayOrder.ToString())
-            //{
-            //    ModelState.AddModelError("name", "The DisplayOrder cannot exactly match the Name.");
-            //}
-
             if (ModelState.IsValid)
             {
                 _db.Categories.Add(obj);
@@ -116,8 +112,6 @@ namespace AgriTourismProject.Controllers
             return RedirectToAction("Index");
         }
 
-
-
         public IActionResult Details(int? id)
         {
             if (id == null || id == 0)
@@ -135,42 +129,69 @@ namespace AgriTourismProject.Controllers
             return View(categoryFromDb);
         }
 
-
-
-
-
         public IActionResult Payment(int id)
         {
-            var category = _db.Categories.FirstOrDefault(c => c.Id == id);
+            var category = _db.Categories.Find(id);
             if (category == null)
             {
                 return NotFound();
             }
 
-            if (category.Capacity > 0)
+            var user = _db.Users.FirstOrDefault(); // Replace with logic to get the current user
+            if (user == null)
             {
-                category.Capacity--;
-                _db.SaveChanges();
-                TempData["BookingSuccess"] = true;
-                return RedirectToAction("PaymentConfirmation");
+                return NotFound();
             }
-            else
+
+            var paymentViewModel = new PaymentViewModel
+            {
+                UserId = user.Id,
+                UserName = user.Name,
+                UserEmail = user.Email,
+                UserPhoneNumber = user.PhoneNumber,
+                UserAddress = user.Address,
+                Id = category.Id,
+                PlaceName = category.Name,
+                Location = category.Location,
+                Date = category.Date
+            };
+
+            return View(paymentViewModel);
+        }
+
+        [HttpPost]
+        public IActionResult ConfirmPayment(PaymentViewModel model)
+        {
+            var category = _db.Categories.Find(model.Id);
+            var user = _db.Users.Find(model.UserId);
+
+            var payment = new Payment
+            {
+                CategoryId = model.Id,
+                UserId = model.UserId,
+                PlaceName = model.PlaceName,
+                Location = model.Location,
+                Date = model.Date,
+                Name = model.UserName,
+                Number = model.UserPhoneNumber
+            };
+
+            if (category == null || user == null || category.Capacity <= 0)
             {
                 TempData["OutOfCapacity"] = true;
-                return RedirectToAction("Details", new { id });
+                return RedirectToAction("Details", new { id = model.Id });
             }
+
+           
+
+            _db.Payments.Add(payment);
+            category.Capacity--; // Decrease capacity by 1
+            _db.SaveChanges();
+
+            TempData["BookingSuccess"] = true;
+            return RedirectToAction("Index");
         }
 
-        public IActionResult PaymentConfirmation()
-        {
-            return View();
-        }
+
     }
-
-
-
 }
-
-
-
-

@@ -1,0 +1,49 @@
+﻿@model AgriTourismProject.Models.PaymentViewModel
+
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<h2>Payment</h2>
+
+<form asp-action="ConfirmPayment" method="post">
+    <div class="form-group">
+        <label asp-for="UserName" class="control-label"></label>
+        <input asp-for="UserName" class="form-control" readonly />
+        <span asp-validation-for="UserName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserEmail" class="control-label"></label>
+        <input asp-for="UserEmail" class="form-control" readonly />
+        <span asp-validation-for="UserEmail" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserPhoneNumber" class="control-label"></label>
+        <input asp-for="UserPhoneNumber" class="form-control" readonly />
+        <span asp-validation-for="UserPhoneNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="UserAddress" class="control-label"></label>
+        <input asp-for="UserAddress" class="form-control" readonly />
+        <span asp-validation-for="UserAddress" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="PlaceName" class="control-label"></label>
+        <input asp-for="PlaceName" class="form-control" readonly />
+        <span asp-validation-for="PlaceName" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Location" class="control-label"></label>
+        <input asp-for="Location" class="form-control" readonly />
+        <span asp-validation-for="Location" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Date" class="control-label"></label>
+        <input asp-for="Date" class="form-control" readonly />
+        <span asp-validation-for="Date" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="UserId" />
+    <button type="submit" class="btn btn-primary">Confirm Payment</button>
+</form>
