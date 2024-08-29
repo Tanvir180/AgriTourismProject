@@ -34,4 +34,9 @@ public class Payment
 
     [Required]
     public string Number { get; set; }
+
+    // New Property to store Cost from Category table
+    [Required]
+    [Range(0, double.MaxValue, ErrorMessage = "Cost must be a positive number.")]
+    public double Cost { get; set; }
 }

@@ -14,28 +14,34 @@ namespace AgriTourismProject.Controllers
             _db = db;
         }
 
-        public IActionResult Index(string searchString)
+        public IActionResult Index(string searchString, DateTime? searchDate)
         {
-            List<Category> objCategoryList;
+            List<Category> objCategoryList = _db.Categories.ToList();
 
-            if (string.IsNullOrEmpty(searchString))
+            // Search by name or location
+            if (!string.IsNullOrEmpty(searchString))
             {
-                objCategoryList = _db.Categories.ToList();
-            }
-            else
-            {
-                objCategoryList = _db.Categories
+                objCategoryList = objCategoryList
                     .Where(c => c.Name.Contains(searchString) || c.Location.ToString().Contains(searchString))
                     .ToList();
-
-                if (!objCategoryList.Any())
-                {
-                    TempData["warning"] = "No categories found matching your search criteria.";
-                }
             }
+
+            // Search by date
+            if (searchDate.HasValue)
+            {
+                objCategoryList = objCategoryList
+                    .Where(c => c.Date.Date == searchDate.Value.Date)
+                    .ToList();
+            }
+
+            //if (!objCategoryList.Any())
+            //{
+            //    TempData["warning"] = "No categories found matching your search criteria.";
+            //}
 
             return View(objCategoryList);
         }
+
 
         public IActionResult Create()
         {
@@ -153,7 +159,8 @@ namespace AgriTourismProject.Controllers
                 Id = category.Id,
                 PlaceName = category.Name,
                 Location = category.Location,
-                Date = category.Date
+                Date = category.Date,
+                Cost = category.Cost
             };
 
             return View(paymentViewModel);
@@ -173,7 +180,8 @@ namespace AgriTourismProject.Controllers
                 Location = model.Location,
                 Date = model.Date,
                 Name = model.UserName,
-                Number = model.UserPhoneNumber
+                Number = model.UserPhoneNumber,
+                Cost = category.Cost
             };
 
             if (category == null || user == null || category.Capacity <= 0)
@@ -182,8 +190,6 @@ namespace AgriTourismProject.Controllers
                 return RedirectToAction("Details", new { id = model.Id });
             }
 
-           
-
             _db.Payments.Add(payment);
             category.Capacity--; // Decrease capacity by 1
             _db.SaveChanges();
@@ -191,7 +197,5 @@ namespace AgriTourismProject.Controllers
             TempData["BookingSuccess"] = true;
             return RedirectToAction("Index");
         }
-
-
     }
 }

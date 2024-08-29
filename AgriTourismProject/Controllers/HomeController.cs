@@ -1,3 +1,4 @@
+using AgriTourismProject.Data;
 using AgriTourismProject.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
@@ -8,14 +9,20 @@ namespace AgriTourismProject.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+
+        private readonly ApplicationDbContext _db;
+
+        public HomeController(ApplicationDbContext db)
         {
-            _logger = logger;
+            _db = db;
         }
 
         public IActionResult Index()
         {
-            return View();
+            // Fetching data from the Categories table
+            var categories = _db.Categories.ToList();
+
+            return View(categories); // Passing data to the Index view
         }
 
         public IActionResult Privacy()
