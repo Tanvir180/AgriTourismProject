@@ -26,14 +26,17 @@
                         <dt class="col-sm-4">Date</dt>
                         <dd class="col-sm-8">@Model.Date.ToString("yyyy-MM-dd")</dd>
                     </dl>
-                    <div class="text-center">
-                     
-                        <a asp-controller="Category" asp-action="Payment" asp-route-id="@Model.Id" class="btn btn-info mx-2">
-                            <i class="bi bi-eye-fill"></i> Payment
+                    <div class="text-center mt-4">
+                        <a asp-controller="Category" asp-action="Payment" asp-route-id="@Model.Id" class="btn btn-info mx-2 px-4 py-2 shadow-sm d-inline-flex align-items-center" style="border-radius: 25px; background-color: #17a2b8; border-color: #17a2b8;">
+                            <i class="bi bi-credit-card-fill me-2"></i> Make Payment
                         </a>
 
-                        <a asp-action="Index" class="btn btn-secondary mt-2">Back to List</a>
+                        <a asp-action="Index" class="btn btn-secondary mx-2 px-4 py-2 shadow-sm d-inline-flex align-items-center" style="border-radius: 25px; background-color: #6c757d; border-color: #6c757d;">
+                            <i class="bi bi-arrow-left-circle me-2"></i> Back to List
+                        </a>
                     </div>
+
+
                 </div>
             </div>
         </div>

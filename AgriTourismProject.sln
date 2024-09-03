@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35208.52
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgriTourismProject", "AgriTourismProject\AgriTourismProject.csproj", "{BD146A30-FB87-4AD8-B11D-585572243A6D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AgriTourismProject.MVC", "AgriTourismProject\AgriTourismProject.MVC.csproj", "{BD146A30-FB87-4AD8-B11D-585572243A6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriTourismProject.Aggregate", "AgriTourismProject.Aggregate\AgriTourismProject.Aggregate.csproj", "{6A0E0127-28AE-44E5-95CB-540778C8EE5C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriTourismProject.Handler", "AgriTourismProject.Handler\AgriTourismProject.Handler.csproj", "{E999BEE0-D941-4A8F-B6C1-9A89B0C4CC89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriTourismProject.Repository", "AgriTourismProject.Repository\AgriTourismProject.Repository.csproj", "{6DB66E35-8952-4701-BC40-DBA62515B824}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AgriTourismProject.DTO", "AgriTourismProject.DTO\AgriTourismProject.DTO.csproj", "{7E3D67BA-DD39-44C9-826D-08BE41264C1E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +23,22 @@ Global
 		{BD146A30-FB87-4AD8-B11D-585572243A6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BD146A30-FB87-4AD8-B11D-585572243A6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BD146A30-FB87-4AD8-B11D-585572243A6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A0E0127-28AE-44E5-95CB-540778C8EE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A0E0127-28AE-44E5-95CB-540778C8EE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A0E0127-28AE-44E5-95CB-540778C8EE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A0E0127-28AE-44E5-95CB-540778C8EE5C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E999BEE0-D941-4A8F-B6C1-9A89B0C4CC89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E999BEE0-D941-4A8F-B6C1-9A89B0C4CC89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E999BEE0-D941-4A8F-B6C1-9A89B0C4CC89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E999BEE0-D941-4A8F-B6C1-9A89B0C4CC89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6DB66E35-8952-4701-BC40-DBA62515B824}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DB66E35-8952-4701-BC40-DBA62515B824}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DB66E35-8952-4701-BC40-DBA62515B824}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DB66E35-8952-4701-BC40-DBA62515B824}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E3D67BA-DD39-44C9-826D-08BE41264C1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E3D67BA-DD39-44C9-826D-08BE41264C1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E3D67BA-DD39-44C9-826D-08BE41264C1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E3D67BA-DD39-44C9-826D-08BE41264C1E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

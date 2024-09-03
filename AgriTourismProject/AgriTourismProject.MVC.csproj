@@ -21,4 +21,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AgriTourismProject.Aggregate\AgriTourismProject.Aggregate.csproj" />
+    <ProjectReference Include="..\AgriTourismProject.DTO\AgriTourismProject.DTO.csproj" />
+    <ProjectReference Include="..\AgriTourismProject.Repository\AgriTourismProject.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

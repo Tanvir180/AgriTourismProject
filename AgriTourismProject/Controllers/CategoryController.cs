@@ -60,7 +60,8 @@ namespace AgriTourismProject.Controllers
             }
             return View();
         }
-
+        // There are two method of the name Edit first one  use for when user press the edit button it fetch the id and display it
+        // The second Edit is used for the HttpPost method it save the change to the database
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
